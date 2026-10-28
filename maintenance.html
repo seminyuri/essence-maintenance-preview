@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFCF9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0D08" media="(prefers-color-scheme: dark)">
+<title>Суть моргнула · обновление</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,400&family=Manrope:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #FFFCF9; --bg-2: #F5F0EA; --fg: #1A1612; --muted: #5C534B; --subtle: #756C64;
+  --line: #E8E0D6; --accent: #7A5340; --accent-2: #9A6E55; --glow: rgba(221,176,136,.45);
+  --card: rgba(255,255,255,.72); --ok: #3F6B45;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0F0D08; --bg-2: #1A1610; --fg: #F4EFE7; --muted: #B5AB9D; --subtle: #948A80;
+    --line: #2A241C; --accent: #E8B898; --accent-2: #F0C9AE; --glow: rgba(200,148,108,.28);
+    --card: rgba(26,22,16,.72); --ok: #8FC497;
+  }
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; }
+body {
+  min-height: 100svh; background: var(--bg); color: var(--fg);
+  font: 400 16px/1.55 Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  display: grid; overflow-x: hidden;
+  background-image:
+    radial-gradient(60rem 40rem at 50% -10%, var(--glow), transparent 70%),
+    radial-gradient(40rem 30rem at 110% 110%, var(--glow), transparent 70%);
+}
+.wrap {
+  width: 100%; max-width: 70rem; margin: auto;
+  padding: max(28px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+  display: grid; gap: 28px; justify-items: center; text-align: center;
+}
+.art { position: relative; width: min(64vw, 240px); aspect-ratio: 1; }
+.art svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orbit { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.spin { transform-origin: 500px 500px; animation: spin linear infinite; }
+.s1 { animation-duration: 38s; } .s2 { animation-duration: 64s; animation-direction: reverse; } .s3 { animation-duration: 110s; }
+.planet { fill: var(--accent-2); }
+.halo { transform-origin: 500px 500px; animation: breathe 5s ease-in-out infinite; }
+.lid { transform-origin: 500px 500px; animation: blink 6s ease-in-out infinite; }
+.look { animation: look 12s ease-in-out infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes breathe { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .9; transform: scale(1.04); } }
+@keyframes blink { 0%,44%,52%,90%,100% { transform: scaleY(1); } 47%,49% { transform: scaleY(.04); } 93% { transform: scaleY(.04); } }
+@keyframes look { 0%,18%,100% { transform: translate(0,0); } 25%,40% { transform: translate(-46px,10px); } 55%,70% { transform: translate(44px,-8px); } 80% { transform: translate(0,0); } }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 10px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--card);
+  font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); position: relative; }
+.dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--accent-2); opacity: 0; animation: ping 2s ease-out infinite; }
+@keyframes ping { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(1.8); opacity: 0; } }
+
+.text { display: grid; gap: 16px; justify-items: center; max-width: 34rem; }
+h1 {
+  font-family: Lora, Georgia, "Times New Roman", serif; font-weight: 500;
+  font-size: clamp(36px, 9vw, 64px); line-height: 1.04; letter-spacing: -.02em; text-wrap: balance;
+}
+h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+.lead { font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); text-wrap: pretty; }
+.joke {
+  font-family: Lora, Georgia, serif; font-style: italic; font-size: 16px; color: var(--subtle);
+  padding-left: 14px; border-left: 2px solid var(--line); text-align: left; text-wrap: pretty;
+}
+
+.status {
+  width: 100%; max-width: 26rem; margin-top: 6px; padding: 14px 16px; border-radius: 16px;
+  background: var(--card); border: 1px solid var(--line); text-align: left;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  display: grid; gap: 10px;
+}
+.row { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+.row b { color: var(--fg); font-weight: 600; }
+.row .t { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--subtle); }
+.bar { height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--accent-2), var(--accent)); transform-origin: left; transform: scaleX(0); }
+.status.ok { border-color: var(--ok); }
+.status.ok .dot { background: var(--ok); }
+.status.ok .dot::after { border-color: var(--ok); }
+
+.foot { font-size: 13px; color: var(--subtle); display: grid; gap: 6px; }
+.foot a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.foot a:hover { border-bottom-color: var(--accent); }
+.code { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+
+@media (min-width: 880px) {
+  .wrap { grid-template-columns: minmax(300px, 1fr) minmax(0, 1.15fr); align-items: center; gap: 56px; text-align: left; justify-items: start; padding-inline: 48px; }
+  .art { width: min(36vw, 440px); justify-self: center; }
+  .text { justify-items: start; }
+  .foot { grid-column: 1 / -1; justify-self: center; text-align: center; margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="art" aria-hidden="true">
+    <svg viewBox="-60 -60 1120 1120">
+      <defs>
+        <radialGradient id="gO" cx="47%" cy="33%" r="60%"><stop offset="0" stop-color="#F0D0B0"/><stop offset=".3" stop-color="#DDB088"/><stop offset=".6" stop-color="#C8946C"/><stop offset="1" stop-color="#906848"/></radialGradient>
+        <radialGradient id="gM" cx="47%" cy="36%" r="55%"><stop offset="0" stop-color="#E0C0A0"/><stop offset=".5" stop-color="#C8A078"/><stop offset="1" stop-color="#907058"/></radialGradient>
+        <radialGradient id="gH" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#DDB088" stop-opacity=".35"/><stop offset="1" stop-color="#DDB088" stop-opacity="0"/></radialGradient>
+        <clipPath id="eye"><circle cx="500" cy="500" r="392"/></clipPath>
+      </defs>
+      <circle class="halo" cx="500" cy="500" r="560" fill="url(#gH)"/>
+      <g class="spin s3"><circle class="orbit" cx="500" cy="500" r="590" stroke-dasharray="2 14"/><circle class="planet" cx="500" cy="-90" r="10"/></g>
+      <g class="spin s2"><circle class="orbit" cx="500" cy="500" r="535"/><circle class="planet" cx="1035" cy="500" r="14"/><circle class="planet" cx="-35" cy="500" r="6" opacity=".6"/></g>
+      <g class="spin s1"><circle class="planet" cx="500" cy="2" r="9" opacity=".8"/></g>
+      <circle cx="500" cy="500" r="470" fill="none" stroke="url(#gO)" stroke-width="30" opacity=".92"/>
+      <circle cx="500" cy="500" r="437" fill="none" stroke="url(#gM)" stroke-width="3" opacity=".45"/>
+      <circle cx="500" cy="500" r="418" fill="none" stroke="url(#gM)" stroke-width="3" opacity=".48"/>
+      <g clip-path="url(#eye)">
+        <circle cx="500" cy="500" r="392" fill="#2A1C12"/>
+        <g class="lid">
+          <circle cx="500" cy="500" r="392" fill="#18100A" stroke="#E0A898" stroke-width="52" opacity=".75"/>
+          <g class="look">
+            <circle cx="500" cy="500" r="242" fill="#F5DCC0" opacity=".96"/>
+            <circle cx="500" cy="500" r="150" fill="#100A06"/>
+            <circle cx="418" cy="418" r="92" fill="#FFE0C0" opacity=".3"/>
+            <circle cx="423" cy="423" r="45" fill="#fff" opacity=".6"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <section class="text">
+    <span class="badge"><span class="dot"></span>Плановое обновление</span>
+    <h1>Суть <em>моргнула</em></h1>
+    <p class="lead">Мы ставим обновление, это займёт несколько минут. Страница откроется сама, как только всё будет готово, нажимать ничего не нужно.</p>
+    <p class="joke">Ваши записи, карты и&nbsp;задачи на месте. Мы не&nbsp;меняем суть вещей, только аккуратно переставляем мебель.</p>
+    <div class="status" id="st" role="status" aria-live="polite">
+      <div class="row"><span class="dot"></span><b id="msg">Проверяем, вернулись ли мы</b><span class="t" id="t"></span></div>
+      <div class="bar"><i id="bar"></i></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Что-то срочное? <a href="mailto:support@the-essence.ai">support@the-essence.ai</a> · <a href="https://t.me/the_essence_support" rel="noopener">@the_essence_support</a></span>
+    <span class="code">503 · плановые работы</span>
+  </footer>
+</main>
+<script>
+(function () {
+  var EVERY = 15, left = EVERY, st = document.getElementById('st'), msg = document.getElementById('msg'),
+      t = document.getElementById('t'), bar = document.getElementById('bar'), busy = false, done = false;
+  function paint() {
+    t.textContent = navigator.onLine === false ? '' : 'через ' + left + ' с';
+    bar.style.transition = left === EVERY ? 'none' : 'transform 1s linear'; bar.style.transform = 'scaleX(' + (1 - left / EVERY) + ')';
+  }
+  function back() {
+    done = true; st.classList.add('ok'); msg.textContent = 'Мы снова здесь, открываем'; t.textContent = '';
+    bar.style.transform = 'scaleX(1)'; setTimeout(function () { location.reload(); }, 700);
+  }
+  function check() {
+    if (busy || done) return; busy = true; msg.textContent = 'Проверяем…'; t.textContent = '';
+    fetch('/up?r=' + Date.now(), { cache: 'no-store', credentials: 'omit' })
+      .then(function (r) { if (r.ok) back(); })
+      .catch(function () {})
+      .then(function () {
+        busy = false; if (done) return;
+        msg.textContent = navigator.onLine === false ? 'Похоже, пропал интернет у вас' : 'Ещё работаем';
+        left = EVERY; paint();
+      });
+  }
+  setInterval(function () { if (done || busy) return; left -= 1; if (left <= 0) check(); else paint(); }, 1000);
+  window.addEventListener('online', check);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) check(); });
+  if (/^nachistotu\./.test(location.hostname)) document.title = 'Начистоту · обновление';
+  paint();
+})();
+</script>
+</body>
+</html>
